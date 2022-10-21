@@ -24,13 +24,14 @@ const RecommendedSong = () => {
 
   const getRcommendedSong = async () => {
     try {
-      let data = await GetRecommendations(getCountry(), page);
+      let countryCode = getCountry();
+      let data = await GetRecommendations(countryCode, page);
       if (data?.status === 200) {
         setRecommendedData(data?.data?.tracks);
         setRefreshing(false);
       }
     } catch (err) {
-      console.log(err);
+      console.log("error", err);
     }
   };
 

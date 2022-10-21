@@ -1,7 +1,15 @@
 import axios from 'axios';
 import { Buffer } from 'buffer';
 import qs from 'qs';
+import { decode, encode } from 'base-64'
 
+if (!global.btoa) {
+  global.btoa = encode;
+}
+
+if (!global.atob) {
+  global.atob = decode;
+}
 export const Get = (token, url, params) => {
   return new Promise(function (resolve, reject) {
     axios
@@ -11,12 +19,9 @@ export const Get = (token, url, params) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(function (response) {
-        console.log('response', response);
         resolve(response);
       })
       .catch(function (error) {
-        console.log('error', error);
-
         reject(error);
       });
   });
@@ -46,8 +51,9 @@ export const PostToken = (url, clientId, clientSecrets) => {
     grant_type: 'client_credentials',
   };
   return new Promise(function (resolve, reject) {
+    let d = qs.stringify(data)
     axios
-      .post(url, qs.stringify(data), {
+      .post(url, d, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           Authorization:

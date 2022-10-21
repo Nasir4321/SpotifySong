@@ -13,7 +13,6 @@ const GetAccessToken = () => {
 export const GetRecommendations = async (code, limit) => {
   let url = `${URL}/recommendations`;
   const token = await GetAccessToken();
-
   let params = {
     seed_artists: '4NHQUGzhtTLFvgF5SZesLK',
     seed_genres: 'country',
