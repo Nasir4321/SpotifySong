@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   SafeAreaView,
@@ -8,9 +8,9 @@ import {
   Image,
 } from 'react-native';
 
-import {useRoute, useNavigation} from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
-import {GetAlbumTracks, GetArtistsPopularity} from '../../api/Api';
+import { GetAlbumTracks, GetArtistsPopularity } from '../../api/Api';
 import styles from './AlbumStyle';
 
 const AlbumSong = () => {
@@ -40,9 +40,9 @@ const AlbumSong = () => {
     getAlbumTracks();
   }, []);
 
-  const onPress = playId => navigation.navigate('PlaySong', {id: playId});
+  const onPress = playId => navigation.navigate('PlaySong', { id: playId });
 
-  const renderItem = ({item, indx}) => (
+  const renderItem = ({ item, indx }) => (
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() => onPress(item?.id)}>
@@ -53,8 +53,8 @@ const AlbumSong = () => {
         }}
       />
       <View style={styles.textContanier}>
-        <Text style={styles.name}>{`${item?.name}`} </Text>
-        <View style={{flexDirection: 'row'}}>
+        <Text style={styles.name}>{item?.name} </Text>
+        <View style={{ flexDirection: 'row' }}>
           {artists.map(ite => (
             <Text style={styles.artist}>{`${ite?.name}, `} </Text>
           ))}

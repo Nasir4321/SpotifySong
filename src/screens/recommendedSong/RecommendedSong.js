@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -10,10 +10,10 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
-import {getCountry} from 'react-native-localize';
+import { useNavigation } from '@react-navigation/native';
+import { getCountry } from 'react-native-localize';
 
-import {GetRecommendations} from '../../api/Api';
+import { GetRecommendations } from '../../api/Api';
 import styles from './RecommendedStyle';
 
 const RecommendedSong = () => {
@@ -33,6 +33,7 @@ const RecommendedSong = () => {
       console.log(err);
     }
   };
+
   const onPress = (id, images, artists) =>
     navigation.navigate('AlbumSong', {
       id: id,
@@ -40,7 +41,7 @@ const RecommendedSong = () => {
       artists: artists,
     });
 
-  const renderItem = ({item, indx}) => (
+  const renderItem = ({ item, indx }) => (
     <TouchableOpacity
       style={styles.itemContainer}
       onPress={() =>
@@ -66,9 +67,8 @@ const RecommendedSong = () => {
 
   const sepraterItem = () => <View style={styles.sepratorView} />;
 
-  const seeMore = () => {
-    setPage(per => (per += 10));
-  };
+  const seeMore = () => setPage(per => (per += 10));
+
   const onRefresh = () => getRcommendedSong();
 
   return (
