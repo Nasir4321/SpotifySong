@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Buffer} from 'buffer';
+import { Buffer } from 'buffer';
 import qs from 'qs';
 
 export const Get = (token, url, params) => {
@@ -8,7 +8,7 @@ export const Get = (token, url, params) => {
       .get(url, {
         params: params,
         'Content-Type': 'application/x-www-form-urlencoded',
-        headers: {Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then(function (response) {
         console.log('response', response);
@@ -67,38 +67,4 @@ export const PostToken = (url, clientId, clientSecrets) => {
   });
 };
 
-export const Delete = (token, url, params) => {
-  return new Promise(function (resolve, reject) {
-    axios
-      .delete(url, {
-        params: params,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(function (response) {
-        resolve(response);
-      })
-      .catch(function (error) {
-        reject(error);
-      });
-  });
-};
 
-export const Put = (token, url, body, params) => {
-  return new Promise(function (resolve, reject) {
-    axios
-      .put(url, body, {
-        params: params,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(function (response) {
-        resolve(response);
-      })
-      .catch(function (error) {
-        reject(error);
-      });
-  });
-};

@@ -1,4 +1,4 @@
-import { Delete, Get, Post, Put, PostToken } from './https';
+import { Get, Post, PostToken } from './https';
 
 const GET_TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const CLIENT_ID = '4d0c8d78204a43ca8883a2f07cf65eb8';
